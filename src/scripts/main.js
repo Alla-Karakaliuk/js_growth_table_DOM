@@ -26,24 +26,19 @@ appendRow.addEventListener('click', () => {
     for (let i = 0; i < currentColumn; i++) {
       const td = document.createElement('td');
 
-      td.textContent = '';
       tr.appendChild(td);
     }
-
     table.appendChild(tr);
     currentRow++;
-    updateButtons();
   }
+  updateButtons();
 });
 
 removeRow.addEventListener('click', () => {
-  updateButtons();
-
   if (currentRow > 2) {
     table.deleteRow(-1);
+    currentRow--;
   }
-
-  currentRow--;
   updateButtons();
 });
 
@@ -54,8 +49,8 @@ appendColumn.addEventListener('click', () => {
 
       row.appendChild(cell);
     });
+    currentColumn++;
   }
-  currentColumn++;
   updateButtons();
 });
 
@@ -64,8 +59,7 @@ removeColumn.addEventListener('click', () => {
     Array.from(table.rows).forEach((row) => {
       row.deleteCell(-1);
     });
+    currentColumn--;
   }
-
-  currentColumn--;
   updateButtons();
 });
